@@ -1,4 +1,6 @@
 <script>
+	import Header from '@domain/components/Header';
+
 	import MainPage from '@domain/components/MainPage/MainPage.svelte';
 	import { connectWeb3 } from '@store';
 	import { onMount } from 'svelte';
@@ -8,4 +10,5 @@
 	});
 </script>
 
+<Header />
 <MainPage />

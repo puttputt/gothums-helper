@@ -15,3 +15,6 @@ export const gothumReadyAt = (gothum: GumResult): Date => {
 export const gothumLastTrickOrTreatedAt = (gothum: GumResult): Date => {
 	return addSeconds(new Date(0), gothum.last);
 };
+
+export const formatTime = (n: Duration): string =>
+	`${('00' + n.hours).slice(-2)}:${('00' + n.minutes).slice(-2)}:${('00' + n.seconds).slice(-2)}`;

@@ -7,6 +7,7 @@
 	import { id } from 'ethers/lib/utils';
 	import ToTForm from '../ToTForm/ToTForm.svelte';
 	import Gothum from '../Gothum';
+	import Instructions from '../Instructions';
 
 	let gothums = [] as GumResult[];
 	let time = {};
@@ -34,14 +35,43 @@
 	});
 </script>
 
-{#if !$web3Store.connected}
-	<ConnectButton />
-{/if}
+<div class="container">
+	<div class="content">
+		<Instructions />
+		<ToTForm {gothums} />
 
-<div>
-	{#each gothums as gothum}
-		<Gothum {gothum} />
-	{/each}
+		<div class="gothum-list">
+			{#each gothums as gothum}
+				<Gothum {gothum} />
+			{/each}
+		</div>
+	</div>
 </div>
 
-<ToTForm {gothums} />
+<style>
+	.container {
+		background-color: #191919;
+		max-width: 1280px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: auto;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-image: url('img/dungeon_brick3.ff541d04.png');
+		background-repeat: no-repeat;
+		image-rendering: pixelated;
+		background-position-x: center;
+		background-position-y: -330 px;
+		min-height: 820px;
+		min-width: 1280px;
+	}
+	.gothum-list {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+</style>

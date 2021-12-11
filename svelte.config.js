@@ -21,7 +21,8 @@ const config = {
 					'@abi': path.resolve('./src/abi'),
 					'@store': path.resolve('./src/store'),
 					'@services': path.resolve('./src/services'),
-					'@utils': path.resolve('./src/utils')
+					'@utils': path.resolve('./src/utils'),
+					$lib: path.resolve('./src')
 				}
 			}
 		}

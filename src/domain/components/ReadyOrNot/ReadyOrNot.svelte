@@ -1,25 +1,61 @@
 <script type="ts">
-	import { gothumLastTrickOrTreatedAt, gothumReadyAt, isGothumReady } from '@utils/time';
+	import {
+		formatTime,
+		gothumLastTrickOrTreatedAt,
+		gothumReadyAt,
+		isGothumReady
+	} from '@utils/time';
 
 	import { formatDuration, intervalToDuration, subSeconds, addSeconds } from 'date-fns';
+	import { onMount } from 'svelte';
 
 	export let gothum;
 
-	let time;
+	let now = new Date();
+	let time = intervalToDuration({
+		start: now,
+		end: gothumReadyAt(gothum)
+	});
 
-	$: time = formatDuration(
-		intervalToDuration({
-			start: gothumLastTrickOrTreatedAt(gothum),
-			end: gothumReadyAt(gothum)
-		}),
-		{
-			zero: false
-		}
-	);
+	onMount(() => {
+		const interval = setInterval(() => {
+			now = new Date();
+			time = intervalToDuration({
+				start: now,
+				end: gothumReadyAt(gothum)
+			});
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	});
 </script>
 
 {#if isGothumReady(gothum)}
-	<span>Ready</span>
+	<span class="ready">READY</span>
 {:else}
-	<span>{time}</span>
+	<span class="not-ready">{formatTime(time)}</span>
 {/if}
+
+<style>
+	.ready {
+		padding: 4px 8px 4px 8px;
+		border-radius: 1px;
+		border: 1px solid;
+		border-color: white;
+		background-color: darkolivegreen;
+		color: white;
+		font-size: x-large;
+	}
+
+	.not-ready {
+		padding: 4px 8px 4px 8px;
+		border-radius: 0px;
+		border: 1px solid;
+		border-color: white;
+		background-color: crimson;
+		color: white;
+		font-size: x-large;
+	}
+</style>
