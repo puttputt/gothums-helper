@@ -58,7 +58,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		background-image: url('img/dungeon_brick.png');
+		background-image: url('/img/dungeon_brick.png');
 		background-repeat: no-repeat;
 		image-rendering: pixelated;
 		background-position-x: center;
