@@ -1,5 +1,8 @@
 <div class="instructions">
-	<p>Welcome to the unnofficial Gothum's helper. Easily send all your gothums trick or treating</p>
+	<p>
+		Welcome to the unofficial <a href="https://gothums.com">Gothum</a>'s helper. Easily send all
+		your gothums trick or treating to door #1 every 24 hours to collect $CNDY.
+	</p>
 
 	<div class="grid">
 		<div class="left">
