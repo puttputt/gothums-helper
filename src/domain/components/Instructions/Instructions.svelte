@@ -11,7 +11,10 @@
 					Ensure the contract interaction transaction matches the official Gothums Trick or Treat
 					contract
 				</li>
-				<li>Wait 1-3 seconds between Confirming transaction requests</li>
+				<li>
+					Wait for TX confirmed in between confirming transaction requests. Too many in succession
+					will cause the transactions to fail.
+				</li>
 			</ol>
 		</div>
 		<div class="right">
