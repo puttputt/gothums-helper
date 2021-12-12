@@ -50,12 +50,14 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
+		margin: 8px;
 	}
 	.left {
 		display: flex;
 		flex-direction: column;
 		width: 50%;
 		align-items: center;
+		padding-right: 16px;
 	}
 
 	.right {
@@ -63,6 +65,7 @@
 		flex-direction: column;
 		width: 50%;
 		align-items: center;
+		padding-left: 16px;
 	}
 
 	p {

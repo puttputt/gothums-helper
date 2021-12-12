@@ -68,9 +68,9 @@
 		background-repeat: no-repeat;
 		image-rendering: pixelated;
 		background-position-x: center;
-
+		padding: 12px;
 		min-height: 820px;
-		min-width: 1280px;
+		/* min-width: 1280px; */
 	}
 	.gothum-list {
 		display: flex;
