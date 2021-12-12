@@ -45,6 +45,12 @@
 	</div>
 </div>
 
+<div class="footer">
+	<a href="https://github.com/puttputt/gothums-helper"
+		><img src="/img/github-logo.png" alt="github" /></a
+	>
+</div>
+
 <style>
 	.container {
 		background-color: #191919;
@@ -62,7 +68,7 @@
 		background-repeat: no-repeat;
 		image-rendering: pixelated;
 		background-position-x: center;
-		background-position-y: -330 px;
+
 		min-height: 820px;
 		min-width: 1280px;
 	}
@@ -70,5 +76,18 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+	}
+
+	.footer {
+		margin: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 16px;
+		height: 100px;
+	}
+
+	.footer img {
+		width: 32px;
 	}
 </style>

@@ -20,4 +20,15 @@
 		font-size: 1.25rem;
 		color: white;
 	}
+
+	button:hover {
+		background-color: white;
+		color: black;
+	}
+
+	button:active {
+		background-color: white;
+		color: black;
+		transform: translateY(4px);
+	}
 </style>

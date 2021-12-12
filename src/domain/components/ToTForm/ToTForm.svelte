@@ -12,15 +12,19 @@
 	};
 </script>
 
-<button class="button" on:click={() => trickOrTreat()}>Trick or Treat</button>
+<button on:click={() => trickOrTreat()}>Trick or Treat</button>
 
 <style>
-	.button {
+	button {
 		width: fit-content;
 		background-color: #f78d15;
 		border-radius: 0.3rem;
 		padding: 0.5rem 1rem;
 		font-size: 1.25rem;
 		color: white;
+	}
+
+	button:active {
+		transform: translateY(4px);
 	}
 </style>

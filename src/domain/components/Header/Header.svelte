@@ -4,7 +4,7 @@
 </script>
 
 <div class="header">
-	<div class="img"><img src="img/logo_gm.png" alt="Gothums" /></div>
+	<img class="img" src="img/logo_gm.png" alt="Gothums" />
 	<h1>Gothums Helper</h1>
 	{#if !$web3Store.connected}
 		<ConnectButton />
