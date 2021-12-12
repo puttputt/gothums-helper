@@ -1,12 +1,7 @@
 <script type="ts">
-	import {
-		formatTime,
-		gothumLastTrickOrTreatedAt,
-		gothumReadyAt,
-		isGothumReady
-	} from '@utils/time';
+	import { formatTime, gothumReadyAt, isGothumReady } from '@utils/time';
 
-	import { formatDuration, intervalToDuration, subSeconds, addSeconds } from 'date-fns';
+	import { intervalToDuration } from 'date-fns';
 	import { onMount } from 'svelte';
 
 	export let gothum;
@@ -17,6 +12,8 @@
 		end: gothumReadyAt(gothum)
 	});
 
+	let ready = false;
+
 	onMount(() => {
 		const interval = setInterval(() => {
 			now = new Date();
@@ -24,6 +21,8 @@
 				start: now,
 				end: gothumReadyAt(gothum)
 			});
+
+			ready = isGothumReady(gothum);
 		}, 1000);
 
 		return () => {
@@ -32,7 +31,7 @@
 	});
 </script>
 
-{#if isGothumReady(gothum)}
+{#if ready}
 	<span class="ready">READY</span>
 {:else}
 	<span class="not-ready">{formatTime(time)}</span>
