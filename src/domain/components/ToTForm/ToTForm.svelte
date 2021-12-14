@@ -6,7 +6,7 @@
 	const trickOrTreat = async () => {
 		const readyGothums = gothums
 			.filter((gothum) => isGothumReady(gothum))
-			.map((gothum) => gothum.id);
+			.map((gothum) => +gothum.id);
 
 		await trickOrTreatMany(readyGothums, 1);
 	};
