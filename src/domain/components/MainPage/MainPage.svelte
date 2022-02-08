@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { web3Store } from '@store';
 	import type { GumResult } from '@domain/models/GumResult';
-	import { getGothum, getGothumIds, getLastTrickOrTreated } from '@services/gothums';
+	import { getGothumIds, getLastTrickOrTreated } from '@services/gothums';
 	import ToTForm from '../ToTForm/ToTForm.svelte';
 	import Gothum from '../Gothum';
 	import Instructions from '../Instructions';
+	import { getGothum } from '@services/gothums-api';
 
 	let gothums = [] as GumResult[];
 	let time = {};

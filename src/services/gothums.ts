@@ -1,6 +1,4 @@
-import type { GumResult } from '@domain/models/GumResult';
 import { gothumContractStore, trickOrTreatContractStore } from '@store';
-import { GOTHUM_API } from '@utils/config';
 import type { BigNumber } from 'ethers';
 import { get } from 'svelte/store';
 
@@ -41,13 +39,4 @@ export const getGothumIds = async (owner: string): Promise<BigNumber[]> => {
 	return await Promise.all(
 		[...Array(balance.toNumber()).keys()].map(async (i) => await getGothumId(owner, i))
 	);
-};
-
-export const getGothum = async (gumId: number): Promise<GumResult> => {
-	try {
-		const response = await fetch(GOTHUM_API + gumId);
-		return await response.json();
-	} catch (e) {
-		console.error(e);
-	}
 };

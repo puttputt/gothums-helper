@@ -1,18 +1,24 @@
 <script type="ts">
-	import { trickOrTreatMany } from '@services/gothums';
+	import { trickOrTreat } from '@services/gothums';
 	import { isGothumReady } from '@utils/time';
 
 	export let gothums;
-	const trickOrTreat = async () => {
+	const trickOrTreatClicked = async () => {
 		const readyGothums = gothums
 			.filter((gothum) => isGothumReady(gothum))
 			.map((gothum) => +gothum.id);
 
-		await trickOrTreatMany(readyGothums, 1);
+		readyGothums.forEach(async (gumId) => {
+			try {
+				await trickOrTreat(gumId, Math.floor(1 + Math.random() * 3));
+			} catch (e) {
+				console.error(e);
+			}
+		});
 	};
 </script>
 
-<button on:click={() => trickOrTreat()}>Trick or Treat</button>
+<button on:click={() => trickOrTreatClicked()}>Trick or Treat</button>
 
 <style>
 	button {
