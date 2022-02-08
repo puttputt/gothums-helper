@@ -7,3 +7,7 @@ Please use the GitHub issues feature
 
 `npm install`
 `npm run dev`
+
+
+### Deploy
+commit to git, vercel will auto-deploy

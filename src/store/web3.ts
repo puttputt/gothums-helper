@@ -4,8 +4,6 @@ import ToTContract from '@abi/tot.json';
 import { writable, derived } from 'svelte/store';
 import { TOT_CONTRACT, GOTHUMS_CONTRACT } from '@utils/config';
 
-export const gothumStore = writable(undefined);
-
 const getWindowEthereum = () => {
 	try {
 		if ((window as Window).ethereum) return window.ethereum;

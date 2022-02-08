@@ -1,5 +1,5 @@
 <script type="ts">
-	import { connectWeb3 } from '@store';
+	import { connectWeb3 } from '@store/web3';
 
 	const connect = async () => {
 		await connectWeb3();

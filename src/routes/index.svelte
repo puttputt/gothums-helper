@@ -2,7 +2,7 @@
 	import Header from '@domain/components/Header';
 
 	import MainPage from '@domain/components/MainPage/MainPage.svelte';
-	import { connectWeb3 } from '@store';
+	import { connectWeb3 } from '@store/web3';
 	import { onMount } from 'svelte';
 
 	onMount(async () => {

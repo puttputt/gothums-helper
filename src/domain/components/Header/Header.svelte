@@ -1,5 +1,5 @@
 <script>
-	import { web3Store } from '@store';
+	import { web3Store } from '@store/web3';
 	import ConnectButton from '../ConnectButton';
 </script>
 

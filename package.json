@@ -2,7 +2,7 @@
 	"name": "gumhelper",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
+		"dev": "svelte-kit dev --port 3001",
 		"build": "svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
@@ -32,6 +32,6 @@
 	"type": "module",
 	"dependencies": {
 		"date-fns": "^2.27.0",
-		"ethers": "^5.5.2"
+		"ethers": "^5.5.4"
 	}
 }

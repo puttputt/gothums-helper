@@ -1,4 +1,4 @@
-import { gothumContractStore, trickOrTreatContractStore } from '@store';
+import { gothumContractStore, trickOrTreatContractStore } from '@store/web3';
 import type { BigNumber } from 'ethers';
 import { get } from 'svelte/store';
 

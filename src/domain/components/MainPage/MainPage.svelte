@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { web3Store } from '@store';
+	import { web3Store } from '@store/web3';
 	import type { GumResult } from '@domain/models/GumResult';
 	import { getGothumIds, getLastTrickOrTreated } from '@services/gothums';
 	import ToTForm from '../ToTForm/ToTForm.svelte';
 	import Gothum from '../Gothum';
 	import Instructions from '../Instructions';
 	import { getGothum } from '@services/gothums-api';
+	import { gumStore, writeGums } from '@store/gum';
+	import { get } from 'svelte/store';
 
 	let gothums = [] as GumResult[];
 	let time = {};
@@ -13,8 +15,14 @@
 	web3Store.subscribe(async (store) => {
 		if (!store.connected) return;
 
+		let gums = get(gumStore)();
 		const ids = await getGothumIds(store.accounts[0]);
-		let gums = await Promise.all(ids.map(async (id) => await getGothum(id.toNumber())));
+
+		if (gums.length !== ids.length) {
+			gums = await Promise.all(ids.map(async (id) => await getGothum(id.toNumber())));
+			writeGums(gums);
+		}
+
 		let times = await Promise.all(
 			ids.map(async (id) => {
 				return { id: id.toNumber(), last: await getLastTrickOrTreated(id.toNumber()) };
