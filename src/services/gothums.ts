@@ -4,7 +4,7 @@ import { get } from 'svelte/store';
 
 export const trickOrTreat = async (gumId: number, doorId: number): Promise<void> => {
 	const totContract = get(trickOrTreatContractStore);
-	return await totContract.trickOrTreat(gumId, doorId);
+	return await totContract.trickOrTreat(gumId, doorId, { gasLimit: 125000 });
 };
 
 export const trickOrTreatMany = async (
