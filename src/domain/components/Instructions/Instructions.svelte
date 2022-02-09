@@ -14,10 +14,6 @@
 					Ensure the contract interaction transaction matches the official Gothums Trick or Treat
 					contract
 				</li>
-				<li>
-					Wait for TX confirmed in between confirming transaction requests. Too many in succession
-					will cause the transactions to fail.
-				</li>
 			</ol>
 		</div>
 		<div class="right">
@@ -32,9 +28,7 @@
 			</p>
 			<p>
 				It calls the trickOrTreat function for each Gothum that is elligble for trick or treating
-				and by default selects door #1. The calculation for CNDY rewards is = (timestamp + doorId)
-				mod 10. Where doorId could be 1 through 4, we deemed the door to be insignificant in the
-				result.
+				and randomly selects door 1-4.
 			</p>
 		</div>
 	</div>

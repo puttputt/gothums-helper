@@ -10,7 +10,7 @@
 
 		readyGothums.forEach(async (gumId) => {
 			try {
-				await trickOrTreat(gumId, Math.floor(1 + Math.random() * 3));
+				await trickOrTreat(gumId, Math.floor(1 + Math.random() * 4));
 			} catch (e) {
 				console.error(e);
 			}
