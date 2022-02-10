@@ -5,39 +5,46 @@
 	import ToTForm from '../ToTForm/ToTForm.svelte';
 	import Gothum from '../Gothum';
 	import Instructions from '../Instructions';
-	import { getGothum } from '@services/gothums-api';
-	import { gumStore, writeGums } from '@store/gum';
+	import { getGothum, getGothums } from '@services/gothums-api';
+	import { gumStore, loadGums, writeGums } from '@store/gum';
 	import { get } from 'svelte/store';
 
 	let gothums = [] as GumResult[];
 	let time = {};
+	let loading = true;
 
 	web3Store.subscribe(async (store) => {
 		if (!store.connected) return;
 
-		let gums = get(gumStore)();
-		const ids = await getGothumIds(store.accounts[0]);
+		loadGums();
+		const ids = await getGothumIds(store.accounts[0]); //big boy '0xc4b426520ea2cace98950d77801b416e886afc1a'
 
+		let gums = get(gumStore);
 		if (gums.length !== ids.length) {
-			gums = await Promise.all(ids.map(async (id) => await getGothum(id.toNumber())));
-			writeGums(gums);
+			gums = await getGothums(ids);
+			gums ? writeGums(gums) : null;
+			gums ? gumStore.set(gums) : null;
 		}
 
-		let times = await Promise.all(
-			ids.map(async (id) => {
-				return { id: id.toNumber(), last: await getLastTrickOrTreated(id.toNumber()) };
-			})
-		);
-		time = times.reduce((map, obj) => {
-			map[obj.id] = obj.last.toNumber();
-			return map;
-		}, {});
+		gumStore.subscribe(async (gums: GumResult[]) => {
+			let times = await Promise.all(
+				ids.map(async (id) => {
+					return { id: id.toNumber(), last: await getLastTrickOrTreated(id.toNumber()) };
+				})
+			);
+			time = times.reduce((map, obj) => {
+				map[obj.id] = obj.last.toNumber();
+				return map;
+			}, {});
 
-		gothums = gums.map((g) => {
-			g.last = time[g.id];
-			return g;
+			loading = false;
+
+			gothums = gums.map((g) => {
+				g.last = time[g.id];
+				return g;
+			});
+			console.log(gothums);
 		});
-		console.log(gothums);
 	});
 </script>
 
@@ -47,6 +54,9 @@
 		<ToTForm {gothums} />
 
 		<div class="gothum-list">
+			{#if loading}
+				<h3>Loading Gums</h3>
+			{/if}
 			{#each gothums as gothum}
 				<Gothum {gothum} />
 			{/each}

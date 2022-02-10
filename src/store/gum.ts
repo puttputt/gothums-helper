@@ -1,15 +1,24 @@
 import { writable } from 'svelte/store';
 
-export const gumStore = writable(() => {
-	const gums = localStorage.getItem('gums');
+export const gumStore = writable([]);
 
-	if (gums) {
-		return JSON.parse(gums);
-	}
-	return [];
-});
+export const loadGums = () =>
+	gumStore.update(() => {
+		const gums = localStorage.getItem('gums');
+
+		if (gums) {
+			try {
+				return JSON.parse(gums);
+			} catch (e) {
+				console.error(e);
+				return [];
+			}
+		} else {
+			return [];
+		}
+	});
 
 export const writeGums = (gums) => {
-	gumStore.update(() => gums);
+	localStorage.setItem('gums', JSON.stringify([]));
 	localStorage.setItem('gums', JSON.stringify(gums));
 };
