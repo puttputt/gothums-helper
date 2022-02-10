@@ -1,7 +1,7 @@
 <div class="instructions">
 	<p>
 		Welcome to the unofficial <a href="https://gothums.com">Gothum</a>'s helper. Easily send all
-		your gothums trick or treating to door #1 every 24 hours to collect $CNDY.
+		your gothums trick or treating to a random door every 24 hours to collect $CNDY.
 	</p>
 
 	<div class="grid">
