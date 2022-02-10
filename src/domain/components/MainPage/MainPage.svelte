@@ -27,6 +27,8 @@
 		}
 
 		gumStore.subscribe(async (gums: GumResult[]) => {
+			loading = false;
+
 			let times = await Promise.all(
 				ids.map(async (id) => {
 					return { id: id.toNumber(), last: await getLastTrickOrTreated(id.toNumber()) };
@@ -36,8 +38,6 @@
 				map[obj.id] = obj.last.toNumber();
 				return map;
 			}, {});
-
-			loading = false;
 
 			gothums = gums.map((g) => {
 				g.last = time[g.id];
@@ -68,6 +68,8 @@
 	<a href="https://github.com/puttputt/gothums-helper"
 		><img src="/img/github-logo.png" alt="github" /></a
 	>
+	<p>made with ❤️ by @puttputt in <a href="https://fantums.com/discord">Fantums discord</a></p>
+	<p class="address">0x71C1cFec0138F92e62804876C01d4B0B86B62033</p>
 </div>
 
 <style>
@@ -104,9 +106,14 @@
 		justify-content: center;
 		padding: 16px;
 		height: 100px;
+		flex-direction: column;
 	}
 
 	.footer img {
 		width: 32px;
+	}
+
+	.address {
+		font-size: small;
 	}
 </style>
