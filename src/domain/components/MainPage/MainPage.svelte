@@ -8,6 +8,7 @@
 	import { getGothum, getGothums } from '@services/gothums-api';
 	import { gumStore, loadGums, writeGums } from '@store/gum';
 	import { get } from 'svelte/store';
+	import Footer from '../Footer';
 
 	let gothums = [] as GumResult[];
 	let time = {};
@@ -62,14 +63,8 @@
 			{/each}
 		</div>
 	</div>
-</div>
 
-<div class="footer">
-	<a href="https://github.com/puttputt/gothums-helper"
-		><img src="/img/github-logo.png" alt="github" /></a
-	>
-	<p>made with ❤️ by @puttputt in <a href="https://fantums.com/discord">Fantums discord</a></p>
-	<p class="address">0x71C1cFec0138F92e62804876C01d4B0B86B62033</p>
+	<Footer />
 </div>
 
 <style>
@@ -97,23 +92,5 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-	}
-
-	.footer {
-		margin: auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 16px;
-		height: 100px;
-		flex-direction: column;
-	}
-
-	.footer img {
-		width: 32px;
-	}
-
-	.address {
-		font-size: small;
 	}
 </style>

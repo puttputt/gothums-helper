@@ -1,8 +1,9 @@
 import { ethers } from 'ethers';
 import GothumsContract from '@abi/gothums.json';
 import ToTContract from '@abi/tot.json';
+import CandyContract from '@abi/candy.json';
 import { writable, derived } from 'svelte/store';
-import { TOT_CONTRACT, GOTHUMS_CONTRACT } from '@utils/config';
+import { TOT_CONTRACT, GOTHUMS_CONTRACT, CANDY_CONTRACT } from '@utils/config';
 
 const getWindowEthereum = () => {
 	try {
@@ -42,6 +43,13 @@ export const trickOrTreatContractStore = derived(web3Store, ($web3Store) => {
 export const gothumContractStore = derived(web3Store, ($web3Store) => {
 	if ($web3Store.connected) {
 		return new ethers.Contract(GOTHUMS_CONTRACT, GothumsContract, $web3Store.signer);
+	}
+	return null;
+});
+
+export const candyContractStore = derived(web3Store, ($web3Store) => {
+	if ($web3Store.connected) {
+		return new ethers.Contract(CANDY_CONTRACT, CandyContract, $web3Store.signer);
 	}
 	return null;
 });
